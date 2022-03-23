@@ -11,6 +11,7 @@ import Center from "./Center";
 import useForm from "../hooks/useForm";
 import useStateContext from "../hooks/useStateContext";
 import { createEndpoint, ENDPOINTS } from "../api";
+import {useNavigate} from 'react-router-dom'
 
 const getFreshModel = () => ({
   name: "",
@@ -21,6 +22,7 @@ function Login() {
     useForm(getFreshModel);
 
   const { setContext } = useStateContext();
+  const navigate = useNavigate()
 
   const validate = () => {
     let temp = {};
@@ -36,7 +38,8 @@ function Login() {
       createEndpoint(ENDPOINTS.participant)
         .post(values)
         .then((res) => {
-          setContext({ participantId: res.data.participantId });
+          setContext({ participantID: res.data.participantID })
+          navigate('/question')
         })
         .catch((e) => console.log(e));
   };
