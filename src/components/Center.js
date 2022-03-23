@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+import React from "react";
 import { Grid } from "@mui/material";
 
 function Center(props) {
@@ -9,7 +11,8 @@ function Center(props) {
       justifyContent="center"
       sx={{ minHeight: "100vh" }}
     >
-      <Grid item sx={1}>{props.children}
+      <Grid item sx={{ my: 1 }}>
+        {props.children}
       </Grid>
     </Grid>
   );

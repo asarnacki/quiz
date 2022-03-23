@@ -1,5 +1,7 @@
-// function Result() {
-//     return (  );
-// }
+import React from "react";
 
-// export default Result;
+function Result() {
+    return ( <div></div> );
+}
+
+export default Result;
