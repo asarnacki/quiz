@@ -6,26 +6,25 @@ import {
   Card,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import Center from "./Center";
 import useForm from "../hooks/useForm";
 import useStateContext from "../hooks/useStateContext";
 import { createEndpoint, ENDPOINTS } from "../api";
-
 
 const getFreshModel = () => ({
   name: "",
   email: "",
 });
 function Login() {
-  const { values, setValues, errors, setErrors, handleInputChange } =
+  const { values, errors, setErrors, handleInputChange } =
     useForm(getFreshModel);
 
-  const {context, setContext} = useStateContext()
+  const { setContext } = useStateContext();
 
   const validate = () => {
     let temp = {};
-    temp.email = (/\S+@\S+\.\S+/).test(values.email) ? "" : "Email is not valid."
+    temp.email = /\S+@\S+\.\S+/.test(values.email) ? "" : "Email is not valid.";
     temp.name = values.name !== "" ? "" : "This field is required.";
     setErrors(temp);
     return Object.values(temp).every((x) => x === "");
@@ -33,7 +32,13 @@ function Login() {
 
   const login = (e) => {
     e.preventDefault();
-    if (validate()) createEndpoint(ENDPOINTS.participant).post(values).then(res => {setContext({participantId:res.data.participantId})}).catch(e => console.log(e))
+    if (validate())
+      createEndpoint(ENDPOINTS.participant)
+        .post(values)
+        .then((res) => {
+          setContext({ participantId: res.data.participantId });
+        })
+        .catch((e) => console.log(e));
   };
 
   return (

@@ -1,11 +1,7 @@
-import { useContext } from "react";
-import useStateContext, { stateContext } from "../hooks/useStateContext";
+import React from "react";
 
 function Question() {
-  
-  const { context, setContext } = useStateContext();
-
-  return <div></div>;
+  return (<div></div>);
 }
 
 export default Question;
