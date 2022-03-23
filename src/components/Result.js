@@ -1,5 +1,5 @@
-function Result() {
-    return (  );
-}
+// function Result() {
+//     return (  );
+// }
 
-export default Result;
+// export default Result;

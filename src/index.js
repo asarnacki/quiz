@@ -17,10 +17,10 @@ const darkTheme = createTheme({
 ReactDOM.render(
   <React.StrictMode>
     <ContextProvider>
-      <ThemeProvider theme={darkTheme}>
-        <CssBaseline />
+      {/* <ThemeProvider theme={darkTheme}> */}
+        {/* <CssBaseline /> */}
         <App />
-      </ThemeProvider>
+      {/* </ThemeProvider> */}
     </ContextProvider>
   </React.StrictMode>,
 
