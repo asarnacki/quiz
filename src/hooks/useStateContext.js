@@ -14,8 +14,8 @@ export default function useStateContext() {
   const { context, setContext } = useContext(stateContext);
   return {
     context,
-    setContext: (obj) => {
-      setContext({ ...ContextProvider, ...obj });
+    setContext: obj => {
+      setContext({ ...context, ...obj });
     },
   };
 }
