@@ -9,12 +9,14 @@ import {
 import React, { useEffect, useState } from "react";
 import { createEndpoint, ENDPOINTS } from "../api";
 import useStateContext from "../hooks/useStateContext";
+import { useNavigate } from "react-router-dom";
 
 function Question() {
   const [questions, setQuestions] = useState([]);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [timeTaken, setTimeTaken] = useState(0);
   const { context, setContext } = useStateContext();
+  const navigate = useNavigate();
   let timer;
 
   const updateAnswer = (questionID, optionIndex) => {
@@ -29,6 +31,7 @@ function Question() {
       setQuestionIndex(questionIndex + 1);
     } else {
       setContext({ selectedOptions: [...temp], timeTaken });
+      navigate("/result");
     }
   };
 
@@ -39,6 +42,10 @@ function Question() {
   };
 
   useEffect(() => {
+    setContext({
+      timeTaken: 0,
+      selectedOptions: [],
+    });
     createEndpoint(ENDPOINTS.question)
       .fetch()
       .then((res) => {

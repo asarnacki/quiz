@@ -14,19 +14,23 @@ const getContext = () => {
       })
     );
   }
-  return JSON.parse(localStorage.getItem('context'))
+  return JSON.parse(localStorage.getItem("context"));
 };
 
 export default function useStateContext() {
   const { context, setContext } = useContext(stateContext);
 
-  useEffect(()=> {
-    localStorage.setItem('context', JSON.stringify(context))
-  },[context])
+  useEffect(() => {
+    localStorage.setItem("context", JSON.stringify(context));
+  }, [context]);
   return {
     context,
     setContext: (obj) => {
       setContext({ ...context, ...obj });
+    },
+    resetContext: () => {
+      localStorage.removeItem("context");
+      setContext(getContext());
     },
   };
 }
