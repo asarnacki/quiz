@@ -6,21 +6,23 @@ import {
   Card,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import Center from "./Center";
 import useForm from "../hooks/useForm";
 import useStateContext from "../hooks/useStateContext";
 import { createEndpoint, ENDPOINTS } from "../api";
+import { useNavigate } from "react-router-dom";
 
 const getFreshModel = () => ({
-  name: "",
-  email: "",
+  name: "siema",
+  email: "artur@wp.pl",
 });
 function Login() {
   const { values, errors, setErrors, handleInputChange } =
     useForm(getFreshModel);
 
-  const { setContext } = useStateContext();
+  const { setContext, resetContext } = useStateContext();
+  const navigate = useNavigate();
 
   const validate = () => {
     let temp = {};
@@ -30,13 +32,17 @@ function Login() {
     return Object.values(temp).every((x) => x === "");
   };
 
+  useEffect(() => {
+    resetContext();
+  }, []);
   const login = (e) => {
     e.preventDefault();
     if (validate())
       createEndpoint(ENDPOINTS.participant)
         .post(values)
         .then((res) => {
-          setContext({ participantId: res.data.participantId });
+          setContext({ participantID: res.data.participantID });
+          navigate('/question');
         })
         .catch((e) => console.log(e));
   };

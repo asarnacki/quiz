@@ -1,10 +1,10 @@
 import axios from "axios";
 
-export const API = "http://localhost:36057";
+export const API = "http://localhost:39750";
 
 export const ENDPOINTS = {
   participant: "participant",
-  questions: "questions",
+  question: "question",
 };
 
 export const createEndpoint = (endpoint) => {
