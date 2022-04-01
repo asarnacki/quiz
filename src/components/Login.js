@@ -17,11 +17,13 @@ const getFreshModel = () => ({
   name: "siema",
   email: "artur@wp.pl",
 });
-function Login() {
+
+export default function Login() {
   const { values, errors, setErrors, handleInputChange } =
     useForm(getFreshModel);
-
   const { setContext, resetContext } = useStateContext();
+  // eslint-disable-next-line no-unused-vars
+  const { name, setName } = useStateContext();
   const navigate = useNavigate();
 
   const validate = () => {
@@ -42,7 +44,7 @@ function Login() {
         .post(values)
         .then((res) => {
           setContext({ participantID: res.data.participantID });
-          navigate('/question');
+          navigate("/question");
         })
         .catch((e) => console.log(e));
   };
@@ -94,5 +96,3 @@ function Login() {
     </Center>
   );
 }
-
-export default Login;

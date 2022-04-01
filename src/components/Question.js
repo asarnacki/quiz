@@ -7,7 +7,8 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { createEndpoint, ENDPOINTS } from "../api";
+import { createEndpoint } from "../api";
+import { ENDPOINTS } from "../api/";
 import useStateContext from "../hooks/useStateContext";
 import { useNavigate } from "react-router-dom";
 
