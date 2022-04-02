@@ -7,7 +7,7 @@ import {
   AccordionSummary,
   Typography,
 } from "@mui/material";
-import ExpandCircleDownIcon from "@mui/icons-material/ExpandCircleDown";
+import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
 import { green, red } from "@mui/material/colors";
 
 // eslint-disable-next-line react/prop-types
@@ -36,7 +36,7 @@ export function Answer({ qnAnswers }) {
         >
           <AccordionSummary
             expandIcon={
-              <ExpandCircleDownIcon
+              <ArrowDropDownCircleIcon
                 sx={{
                   color: item.answer == item.selected ? green[500] : red[500],
                 }}
