@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import { useNavigate } from "react-router";
+import { Answer } from "./Answer";
 
 export default function Result() {
   const { context, setContext } = useStateContext();
@@ -69,45 +70,51 @@ export default function Result() {
   };
 
   return (
-    <Card
-      sx={{ mt: 5, display: "flex", width: "70%", maxwidth: 640, mx: "auto" }}
-    >
-      <Box sx={{ display: "flex", flexDirectiom: "column", flexGrow: 1 }}>
-        <CardContent sx={{ flex: "1 0 auto", textAlign: "center" }}>
-          <Typography variant="h4">Congrats </Typography>
-          <Typography variant="h5" sx={{ fontWeight: 600 }}>
-            Yous score is: {score}/5
-          </Typography>
-          <Typography variant="h5">
-            It took you {context.timeTaken}sec
-          </Typography>
-          <Button
-            variant="contained"
-            sx={{ mx: 1 }}
-            size="small"
-            onClick={submit}
-          >
-            Submit
-          </Button>
-          <Button
-            variant="contained"
-            sx={{ mx: 1 }}
-            size="small"
-            onClick={restart}
-          >
-            Retry
-          </Button>
-          <Alert
-            severity="success"
-            variant="string"
-            sx={{ width: "60%", m: "auto", visibility: showAlert ? 'visible' : 'hidden' }}
-          >
-            Score updated
-          </Alert>
-        </CardContent>
-      </Box>
-
-      <CardMedia component="img" sx={{ width: 220 }} image="./result.png" />
-    </Card>
+    <>
+      <Card
+        sx={{ mt: 5, display: "flex", width: "70%", maxwidth: 640, mx: "auto" }}
+      >
+        <Box sx={{ display: "flex", flexDirectiom: "column", flexGrow: 1 }}>
+          <CardContent sx={{ flex: "1 0 auto", textAlign: "center" }}>
+            <Typography variant="h4">Congrats </Typography>
+            <Typography variant="h5" sx={{ fontWeight: 600 }}>
+              Yous score is: {score}/5
+            </Typography>
+            <Typography variant="h5">
+              It took you {context.timeTaken}sec
+            </Typography>
+            <Button
+              variant="contained"
+              sx={{ mx: 1 }}
+              size="small"
+              onClick={submit}
+            >
+              Submit
+            </Button>
+            <Button
+              variant="contained"
+              sx={{ mx: 1 }}
+              size="small"
+              onClick={restart}
+            >
+              Retry
+            </Button>
+            <Alert
+              severity="success"
+              variant="string"
+              sx={{
+                width: "60%",
+                m: "auto",
+                visibility: showAlert ? "visible" : "hidden",
+              }}
+            >
+              Score updated
+            </Alert>
+          </CardContent>
+        </Box>
+        <CardMedia component="img" sx={{ width: 220 }} image="./result.png" />
+      </Card>
+      <Answer qnAnswers={qnAnswers} />
+    </>
   );
 }

@@ -8,7 +8,7 @@ const getContext = () => {
     localStorage.setItem(
       "context",
       JSON.stringify({
-        participandID: 0,
+        participantID: 0,
         timeTaken: 0,
         selectedOptions: [],
       })
