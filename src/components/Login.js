@@ -14,8 +14,8 @@ import { createEndpoint, ENDPOINTS } from "../api";
 import { useNavigate } from "react-router-dom";
 
 const getFreshModel = () => ({
-  name: "siema",
-  email: "artur@wp.pl",
+  name: "", 
+  email: "",
 });
 
 export default function Login() {
